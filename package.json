@@ -8,7 +8,8 @@
     "keywords": ["TextMesh Pro", "Animation"],
     "category": "Animation",
     "dependencies": {
-         "com.unity.textmeshpro": "2.0.1"
+         "com.unity.textmeshpro": "2.0.1",
+         "com.unity.timeline": "1.1.0"
     },
     "samples": [
         {

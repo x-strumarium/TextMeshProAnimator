@@ -7,6 +7,7 @@
 //#define TMPA_OUTPUT_LOG
 
 using UnityEngine;
+using UnityEngine.Timeline;
 using TMPro;
 
 
@@ -14,7 +15,7 @@ using TMPro;
 /// TextMeshPro ジオメトリアニメーション
 /// <note>テキスト内容をランタイムで変更し続けるとGCを多く発生しますので、ご留意ください</note>
 /// </summary>
-public class TextMeshProGeometryAnimator : MonoBehaviour
+public class TextMeshProGeometryAnimator : MonoBehaviour, ITimeControl
 {
 	/// <summary>
 	/// アニメーションプログレス(エディタ確認用)
@@ -191,6 +192,18 @@ public class TextMeshProGeometryAnimator : MonoBehaviour
 			Refresh(this.playByProgress);
 		}
 	}
+
+	/// <summary>
+	/// タイムラインクリップがアクティブな各フレームで呼び出されます
+	/// </summary>
+	/// <param name="time">関連するタイムラインクリップのローカル時刻</param>
+	public void SetTime(double time)
+	{
+		if (this.gameObject.activeSelf)
+			OnValidateChild();
+	}
+	public void OnControlTimeStart() { }
+	public void OnControlTimeStop() { }
 	#endregion
 
 
